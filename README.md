@@ -4,4 +4,4 @@ I tested this script on Debian 12.
 You need to run this script on every system that involved in the cluster (control and worker plane as well)
 The script gonna install everything for you, after it's done gonna ask what kind of machine you runned the script worker or control plane.
 
-This script include installation of Calico networking and Contour ingress controller as well.
+This script include installation of Calico networking and Contour ingress controller as well, and works with CRI-O Container Runtime Interface.

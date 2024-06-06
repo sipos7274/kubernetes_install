@@ -108,10 +108,17 @@ esac
 # Additional command helps
 #-------------------------------------------------------------------------
 
-# echo "192.168.126.100 control" >> /etc/hosts && echo "127.0.0.1 control" >> /etc/hosts
+# Create kube environment
 # mkdir -p $HOME/.kube && cp -rpfi /etc/kubernetes/admin.conf $HOME/.kube/config && chown $(id -u):$(id -g) $HOME/.kube/config
-# kubeadm init --apiserver-advertise-address=192.168.126.100 --pod-network-cidr=10.10.0.0/16 --cri-socket=unix://var/run/crio/crio.sock
+
+# Install Calico networking
 # wget https://raw.githubusercontent.com/projectcalico/calico/master/manifests/calico.yaml && kubectl apply -f calico.yaml
+
+# Print join command to the cluster
 # kubeadm token create --print-join-command
+
+# Rename nodes
 # kubectl label node worker1 node-role.kubernetes.io/worker=worker
+
+# Install Contour ingress controller
 # kubectl apply -f https://projectcontour.io/quickstart/contour.yaml

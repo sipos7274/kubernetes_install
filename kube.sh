@@ -94,6 +94,7 @@ case "$ANS" in
 	sleep 2
 	mkdir -p $HOME/.kube && cp -rpfi /etc/kubernetes/admin.conf $HOME/.kube/config && chown $(id -u):$(id -g) $HOME/.kube/config
 	wget https://raw.githubusercontent.com/projectcalico/calico/master/manifests/calico.yaml && kubectl apply -f calico.yaml
+ 	kubectl apply -f https://projectcontour.io/quickstart/contour.yaml
 	sleep 2
 	kubeadm token create --print-join-command
 	echo "Successfully Done"

@@ -50,7 +50,7 @@ It supports both **control-plane** and **worker** node roles:
    
 ## 🧭 When Prompted
 
-- nter 2 for a Control-plane node
+- Enter 2 for a Control-plane node
 - → The script will initialize the Kubernetes cluster, configure Calico networking, and deploy the Contour ingress controller automatically.
 
 - Enter 1 (or press Enter / wait for timeout) for a Worker node

@@ -5,10 +5,9 @@
 
 set -euo pipefail
 
-# Fail if not root
-if [ "$(id -u)" -ne 0 ]; then
-  echo "ERROR: this script must be run as root. Use 'sudo' or run as root." >&2
-  exit 1
+# === ROOT CHECK =============================================================
+if [[ $EUID -ne 0 ]]; then
+  error "Please run this script as root."
 fi
 
 IFS=$'\n\t'
@@ -33,11 +32,6 @@ error() { echo -e "\033[1;31m[ERROR]\033[0m $*" >&2; exit 1; }
 require() {
   command -v "$1" >/dev/null 2>&1 || error "Missing required command: $1"
 }
-
-# === ROOT CHECK =============================================================
-if [[ $EUID -ne 0 ]]; then
-  error "Please run this script as root."
-fi
 
 # === REQUIREMENTS ===========================================================
 for cmd in curl gpg tee awk systemctl ip modprobe; do

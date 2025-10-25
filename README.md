@@ -43,11 +43,10 @@ It supports both **control-plane** and **worker** node roles:
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/<your-username>/k8s-auto-installer.git
-   cd k8s-auto-installer
-   chmod +x install-k8s.sh
-   sudo ./install-k8s.sh
-   
+   git clone https://github.com/sipos7274/kubernetes_install.git
+   cd kubernetes_install/
+   chmod +x kube.sh
+   ./kube.sh
    
 ## 🧭 When Prompted
 

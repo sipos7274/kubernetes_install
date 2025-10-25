@@ -93,6 +93,39 @@ net.ipv4.ip_forward = 1
 EOF
 sysctl --system >/dev/null
 
+
+# === REMOVE DOCKER IF IT'S INSTALLED ============================================================
+
+# List of Docker-related packages
+DOCKER_PACKAGES=(
+    docker-ce
+    docker-ce-cli
+    docker-ce-rootless-extras
+    docker-compose-plugin
+    docker-compose
+    docker-scan-plugin
+    docker-engine
+    docker.io
+    containerd
+    runc
+)
+
+# Check if any of the packages are installed
+installed_packages=()
+for pkg in "${DOCKER_PACKAGES[@]}"; do
+    if dpkg -l | grep -q "^ii\s\+$pkg"; then
+        installed_packages+=("$pkg")
+    fi
+done
+
+# If any are installed, purge them
+if [ ${#installed_packages[@]} -gt 0 ]; then
+    echo "Purging installed Docker packages: ${installed_packages[*]}"
+    apt-get purge -y "${installed_packages[@]}"
+else
+    echo "No Docker-related packages are installed. Skipping purge."
+fi
+
 # === CRI-O SETUP ============================================================
 log "Setting up CRI-O repository..."
 CRIO_KEY="${KEYRING_DIR}/cri-o-apt-keyring.gpg"

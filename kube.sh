@@ -121,6 +121,7 @@ done
 # If any are installed, purge them
 if [ ${#installed_packages[@]} -gt 0 ]; then
     echo "Purging installed Docker packages: ${installed_packages[*]}"
+    systemctl disable --now unattended-upgrades.service
     apt-get purge -y "${installed_packages[@]}"
 else
     echo "No Docker-related packages are installed. Skipping purge."

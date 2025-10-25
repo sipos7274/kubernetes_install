@@ -4,6 +4,13 @@
 # --------------------------------------------------------------------------
 
 set -euo pipefail
+
+# Fail if not root
+if [ "$(id -u)" -ne 0 ]; then
+  echo "ERROR: this script must be run as root. Use 'sudo' or run as root." >&2
+  exit 1
+fi
+
 IFS=$'\n\t'
 
 # === CONFIGURATION ==========================================================
@@ -132,3 +139,13 @@ if [[ "$ROLE" == "2" ]]; then
 else
   warn "Invalid input. Defaulting to Worker node. Setup complete."
 fi
+
+#-------------------------------------------------------------------------
+# Additional command helps
+#-------------------------------------------------------------------------
+
+# echo "192.168.126.100 control" >> /etc/hosts && echo "127.0.0.1 control" >> /etc/hosts
+# mkdir -p $HOME/.kube && cp -rpfi /etc/kubernetes/admin.conf $HOME/.kube/config && chown $(id -u):$(id -g) $HOME/.kube/config
+# kubeadm init --apiserver-advertise-address=192.168.126.100 --pod-network-cidr=10.10.0.0/16 --cri-socket=unix://var/run/crio/crio.sock
+# wget https://raw.githubusercontent.com/projectcalico/calico/master/manifests/calico.yaml && kubectl apply -f calico.yaml
+# kubeadm token create --print-join-command

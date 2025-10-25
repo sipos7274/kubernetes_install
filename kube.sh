@@ -6,8 +6,9 @@
 set -euo pipefail
 
 # === ROOT CHECK =============================================================
-if [[ $EUID -ne 0 ]]; then
-  error "Please run this script as root."
+if [ "$(id -u)" -ne 0 ]; then
+  echo "ERROR: this script must be run as root. Use 'sudo' or run as root." >&2
+  exit 1
 fi
 
 IFS=$'\n\t'

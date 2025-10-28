@@ -41,7 +41,7 @@ It supports both **control-plane** and **worker** node roles:
 
 ## 🚀 Usage
 
-1. Clone this repository:
+1. Run:
    ```bash
    curl -fsSL https://raw.githubusercontent.com/sipos7274/kubernetes_install/refs/heads/main/kube.sh | bash
    

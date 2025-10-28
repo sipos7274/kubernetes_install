@@ -43,10 +43,7 @@ It supports both **control-plane** and **worker** node roles:
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/sipos7274/kubernetes_install.git
-   cd kubernetes_install/
-   chmod +x kube.sh
-   ./kube.sh
+   curl -fsSL https://raw.githubusercontent.com/sipos7274/kubernetes_install/refs/heads/main/kube.sh | bash
    
 ## 🧭 When Prompted
 
